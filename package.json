@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
-    "@stackbit/cms-git": "^0.5.0",
+    "@stackbit/cms-git": "^0.4.0",
     "@stackbit/types": "^0.6.0",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
