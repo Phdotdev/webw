@@ -9,7 +9,11 @@ const Hero = () => {
   const { frontmatter } = parseMarkdownContent(homeContentRaw);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800" data-sb-object-id="home">
+    <section 
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800" 
+      data-sb-object-id="home"
+    >
       {/* Animated Background - Fiber Optic Lines */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent animate-pulse-slow opacity-60"></div>
@@ -24,7 +28,10 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Main Heading */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-slide-up" data-sb-field-path="title">
+        <h1 
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-slide-up" 
+          data-sb-field-path="subtitle"
+        >
           {frontmatter.subtitle || "Documente, planeje ou"} 
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
             expanda sua rede FTTH
@@ -32,7 +39,10 @@ const Hero = () => {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto animate-slide-up delay-200" data-sb-field-path="description">
+        <p 
+          className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto animate-slide-up delay-200" 
+          data-sb-field-path="description"
+        >
           {frontmatter.description || "com agilidade e precisão. Seu projeto começa aqui."}
         </p>
 
@@ -60,18 +70,30 @@ const Hero = () => {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 animate-slide-up delay-600">
           <div className="text-center">
-            <div className="text-3xl font-bold text-gold-400 mb-2" data-sb-field-path="stats_remote">
+            <div 
+              className="text-3xl font-bold text-gold-400 mb-2" 
+              data-sb-field-path="stats_remote"
+            >
               {frontmatter.stats_remote || "100%"}
             </div>
-            <div className="text-gray-300" data-sb-field-path="stats_remote_label">
+            <div 
+              className="text-gray-300" 
+              data-sb-field-path="stats_remote_label"
+            >
               {frontmatter.stats_remote_label || "Remoto"}
             </div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-gold-400 mb-2" data-sb-field-path="stats_quality">
+            <div 
+              className="text-3xl font-bold text-gold-400 mb-2" 
+              data-sb-field-path="stats_quality"
+            >
               {frontmatter.stats_quality || "✓"}
             </div>
-            <div className="text-gray-300" data-sb-field-path="stats_quality_label">
+            <div 
+              className="text-gray-300" 
+              data-sb-field-path="stats_quality_label"
+            >
               {frontmatter.stats_quality_label || "Praticidade e Velocidade"}
             </div>
           </div>

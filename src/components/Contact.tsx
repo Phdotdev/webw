@@ -36,13 +36,23 @@ ${formData.phone ? `Telefone: ${formData.phone}` : ''}`;
   };
 
   return (
-    <section id="contato" className="py-20 bg-primary-900" data-sb-object-id="contact">
+    <section 
+      id="contato" 
+      className="py-20 bg-primary-900" 
+      data-sb-object-id="contact"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4" data-sb-field-path="title">
+          <h2 
+            className="text-4xl md:text-5xl font-bold text-white mb-4" 
+            data-sb-field-path="title"
+          >
             {frontmatter.title || "Entre em"} <span className="text-gold-500">Contato</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto" data-sb-field-path="subtitle">
+          <p 
+            className="text-xl text-gray-300 max-w-3xl mx-auto" 
+            data-sb-field-path="subtitle"
+          >
             {frontmatter.subtitle || "Pronto para começar seu projeto? Fale comigo agora mesmo!"}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto mt-6"></div>
@@ -53,7 +63,10 @@ ${formData.phone ? `Telefone: ${formData.phone}` : ''}`;
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">Vamos conversar!</h3>
-              <p className="text-gray-300 text-lg mb-8" data-sb-field-path="description">
+              <p 
+                className="text-gray-300 text-lg mb-8" 
+                data-sb-field-path="description"
+              >
                 {frontmatter.description || "Atendo 100% remotamente em todo o Brasil. Entre em contato através dos canais abaixo e receba seu orçamento personalizado."}
               </p>
             </div>
@@ -71,7 +84,12 @@ ${formData.phone ? `Telefone: ${formData.phone}` : ''}`;
                 </div>
                 <div className="ml-6">
                   <h4 className="text-lg font-semibold text-white">WhatsApp</h4>
-                  <p className="text-gray-300" data-sb-field-path="phone">{frontmatter.phone || "(91) 9 9319-0904"}</p>
+                  <p 
+                    className="text-gray-300" 
+                    data-sb-field-path="phone"
+                  >
+                    {frontmatter.phone || "(91) 9 9319-0904"}
+                  </p>
                   <p className="text-sm text-green-400 font-medium">Resposta mais rápida</p>
                 </div>
               </a>
@@ -85,7 +103,12 @@ ${formData.phone ? `Telefone: ${formData.phone}` : ''}`;
                 </div>
                 <div className="ml-6">
                   <h4 className="text-lg font-semibold text-white">Email</h4>
-                  <p className="text-gray-300" data-sb-field-path="email">{frontmatter.email || "pedrohcm8@icloud.com"}</p>
+                  <p 
+                    className="text-gray-300" 
+                    data-sb-field-path="email"
+                  >
+                    {frontmatter.email || "pedrohcm8@icloud.com"}
+                  </p>
                 </div>
               </a>
 
@@ -100,7 +123,12 @@ ${formData.phone ? `Telefone: ${formData.phone}` : ''}`;
                 </div>
                 <div className="ml-6">
                   <h4 className="text-lg font-semibold text-white">Instagram</h4>
-                  <p className="text-gray-300" data-sb-field-path="instagram">{frontmatter.instagram || "@ph_ftth"}</p>
+                  <p 
+                    className="text-gray-300" 
+                    data-sb-field-path="instagram"
+                  >
+                    {frontmatter.instagram || "@ph_ftth"}
+                  </p>
                   <p className="text-sm text-pink-400 font-medium">Acompanhe meus trabalhos</p>
                 </div>
               </a>
@@ -132,7 +160,10 @@ ${formData.phone ? `Telefone: ${formData.phone}` : ''}`;
 
           {/* Contact Form */}
           <div className="bg-primary-950 rounded-2xl shadow-lg p-8 border border-gold-400/20">
-            <h3 className="text-2xl font-bold text-white mb-6" data-sb-field-path="form_title">
+            <h3 
+              className="text-2xl font-bold text-white mb-6" 
+              data-sb-field-path="form_title"
+            >
               {frontmatter.form_title || "Envie sua mensagem"}
             </h3>
             
@@ -210,7 +241,10 @@ ${formData.phone ? `Telefone: ${formData.phone}` : ''}`;
             </form>
 
             <div className="mt-6 p-4 bg-primary-900/50 rounded-lg border border-gold-400/20">
-              <p className="text-sm text-gray-300 text-center" data-sb-field-path="form_note">
+              <p 
+                className="text-sm text-gray-300 text-center" 
+                data-sb-field-path="form_note"
+              >
                 {frontmatter.form_note || "Ao enviar, sua mensagem será direcionada para o WhatsApp para um atendimento mais rápido e personalizado."}
               </p>
             </div>
