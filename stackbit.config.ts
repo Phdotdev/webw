@@ -1,25 +1,20 @@
 import { defineStackbitConfig } from "@stackbit/types";
 
 export default defineStackbitConfig({
-  stackbitVersion: "~0.6.0",
+  stackbitVersion: "~1.0.0",
   ssgName: "custom",
   nodeVersion: "18",
   
-  // Container Hooks para configuração do ambiente de build
+  // Container Hooks essenciais
   installCommand: "npm install",
   devCommand: "npm run dev",
-  
-  // Hooks opcionais (definidos como vazios se não houver scripts específicos)
-  postGitCloneCommand: "",
-  preInstallCommand: "",
-  postInstallCommand: "",
   
   // Configuração dos modelos de página
   models: {
     HomePage: {
       type: "page",
       urlPath: "/",
-      filePath: "content/home.md",
+      filePath: "./content/home.md",
       fields: [
         { 
           name: "title", 
@@ -94,7 +89,7 @@ export default defineStackbitConfig({
     AboutPage: {
       type: "page",
       urlPath: "/about",
-      filePath: "content/about.md",
+      filePath: "./content/about.md",
       fields: [
         { 
           name: "title", 
@@ -158,7 +153,7 @@ export default defineStackbitConfig({
     ContactPage: {
       type: "page",
       urlPath: "/contact",
-      filePath: "content/contact.md",
+      filePath: "./content/contact.md",
       fields: [
         { 
           name: "title", 
