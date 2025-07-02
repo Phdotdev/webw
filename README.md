@@ -39,73 +39,90 @@ npm run dev
 npm run build
 ```
 
-## ✏️ Netlify Visual Editor
+## ✏️ Netlify Visual Editor - Configurações Necessárias
 
-Este projeto está configurado para funcionar com o Netlify Visual Editor, permitindo edição inline do conteúdo.
+### **1. Build Settings no Netlify:**
+- **Build command:** `npm run build`
+- **Publish directory:** `dist`
+- **Base directory:** **DEIXAR VAZIO** (muito importante!)
 
-### Configurações do Netlify:
+### **2. Environment Variables:**
+- **NODE_VERSION:** `18`
 
-**Build Settings:**
-- Build command: `npm run build`
-- Publish directory: `dist`
-- Base directory: (deixar em branco - raiz do repositório)
+### **3. Preview Server Settings:**
+- **Command:** `npm run dev`
+- **Port:** `5173`
+- **Host:** `0.0.0.0`
 
-**Environment Variables:**
-- NODE_VERSION: `18`
+### **4. Verificações Importantes:**
 
-**Preview Server:**
-- Command: `npm run dev`
-- Port: 5173
-- Host: 0.0.0.0
+#### No painel do Netlify, verifique:
 
-### Estrutura de Conteúdo:
+1. **Site settings > Build & deploy > Build settings:**
+   - Base directory: (vazio)
+   - Build command: npm run build
+   - Publish directory: dist
 
-- **home.md**: Conteúdo da página inicial (hero, stats, CTAs)
-- **about.md**: Informações sobre o profissional
+2. **Site settings > Build & deploy > Environment:**
+   - NODE_VERSION = 18
+
+3. **Site settings > Visual Editor:**
+   - Command: npm run dev
+   - Port: 5173
+
+#### Logs de Build para Verificar:
+
+✅ **Sucesso esperado:**
+```
+Installing dependencies...
+npm install completed
+Building site...
+npm run build completed
+Site published successfully
+```
+
+❌ **Erros a procurar:**
+- `ENOENT: no such file or directory, open '/opt/buildhome/.nvm/versions/node/v18.20.4/package.json'`
+- Erros de TypeScript
+- Erros de compilação do Vite
+- Falhas na instalação de dependências
+
+### **5. Troubleshooting do Visual Editor:**
+
+Se o Visual Editor não funcionar após build bem-sucedido:
+
+1. **Verificar logs do Visual Editor:**
+   - Site settings > Visual Editor > View logs
+
+2. **Reiniciar o Preview Server:**
+   - Site settings > Visual Editor > Restart preview
+
+3. **Verificar conectividade:**
+   - O preview server deve estar rodando na porta 5173
+   - Host deve estar configurado como 0.0.0.0
+
+### **6. Estrutura de Conteúdo Editável:**
+
+- **home.md**: Hero, estatísticas, CTAs
+- **about.md**: Informações profissionais
 - **contact.md**: Dados de contato e formulário
 - **portfolio.md**: Informações do portfólio
 
-### Campos Editáveis:
+### **7. Campos Editáveis Implementados:**
 
-Cada arquivo de conteúdo possui campos específicos definidos no `stackbit.config.ts`:
+Todos os componentes principais possuem atributos `data-sb-field-path` para edição inline:
 
-- Textos principais (títulos, descrições)
-- Informações de contato (telefone, email, redes sociais)
-- URLs de WhatsApp e Instagram
-- Estatísticas e labels
+- ✅ Hero (título, subtítulo, descrição, CTAs, estatísticas)
+- ✅ About (nome, profissão, textos descritivos)
+- ✅ Contact (informações de contato, formulário)
+- ✅ Portfolio (títulos, descrições, CTAs)
 
-## 🔧 Diagnóstico do Visual Editor
+## 🔧 Próximos Passos para Diagnóstico:
 
-Se o Visual Editor não estiver funcionando:
-
-1. **Verificar logs no Netlify:**
-   - Acesse Site Settings > Visual Editor
-   - Verifique os logs de erro
-
-2. **Configurações de Build:**
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-   - Base directory: (vazio)
-   - Node version: 18
-
-3. **Preview Server:**
-   - Command: `npm run dev`
-   - Port: 5173
-   - Host: 0.0.0.0
-
-## 🎨 Personalização
-
-O design utiliza uma paleta de cores profissional:
-- **Primary**: Tons de azul escuro
-- **Gold**: Tons dourados para destaques
-- **Gradientes** e **animações** para um visual moderno
-
-## 📱 Responsividade
-
-O site é totalmente responsivo, funcionando perfeitamente em:
-- Desktop
-- Tablet
-- Mobile
+1. **Verificar configurações no Netlify UI** conforme listado acima
+2. **Analisar logs de build** mais recentes
+3. **Verificar logs do Visual Editor** se o build for bem-sucedido
+4. **Testar preview server** manualmente se necessário
 
 ## 📞 Contato
 
@@ -113,19 +130,3 @@ Pedro Moreira - Projetista FTTH
 - WhatsApp: (91) 9 9319-0904
 - Email: pedrohcm8@icloud.com
 - Instagram: @ph_ftth
-
-## 🐛 Troubleshooting
-
-### Problema: package.json não encontrado
-**Solução:** Verificar se o package.json está na raiz do repositório e se o Base directory no Netlify está vazio.
-
-### Visual Editor não carrega:
-1. Verificar se o preview server está rodando na porta 5173
-2. Confirmar que o host está configurado como 0.0.0.0
-3. Verificar logs do Netlify para erros específicos
-4. Confirmar que os headers de segurança estão corretos
-
-### Edição inline não funciona:
-1. Verificar se os atributos `data-sb-field-path` estão corretos
-2. Confirmar que os campos estão definidos no stackbit.config.ts
-3. Verificar se os arquivos .md existem no diretório content/
