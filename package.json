@@ -4,10 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 5173",
-    "build": "vite build",
+    "dev": "vite", // Inicia o servidor de desenvolvimento Vite
+    "build": "vite build", // Gera a build de produção
+    "preview": "vite preview --host 0.0.0.0 --port 5173",
     "lint": "eslint .",
-    "preview": "vite preview --host 0.0.0.0 --port 5173"
+    "netlify-dev": "netlify dev" // Inicia o Netlify Dev localmente
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
