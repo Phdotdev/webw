@@ -10,10 +10,11 @@ publish = "dist"            # Pasta onde os arquivos finais são gerados
 
 
 
+
 # Configuração do ambiente de desenvolvimento local (Netlify Dev)
 [dev]
 command = "npm run dev"     # Comando que inicia o servidor de desenvolvimento (Vite)
-port = 8888                 # Porta onde o Netlify Dev escuta
+port = 8888                 # Porta onde o Netlify Dev escuta (diferente da porta do Vite)
 targetPort = 5173           # Porta real onde o Vite roda por padrão
 publish = "dist"           # Pasta pública usada no dev também
 
