@@ -1,4 +1,3 @@
-
 import { defineStackbitConfig } from "@stackbit/types";
 import { GitContentSource } from "@stackbit/cms-git";
 
@@ -80,5 +79,26 @@ export default defineStackbitConfig({
         }
       ]
     })
-  ]
+  ],
+  modelExtensions: [
+    { name: 'HomePage', type: 'page', urlPath: '/' },
+    { name: 'AboutPage', type: 'page', urlPath: '/about' },
+    { name: 'ContactPage', type: 'page', urlPath: '/contact' },
+    { name: 'PortfolioPage', type: 'page', urlPath: '/portfolio' }
+  ],
+  siteMap: ({ documents, models }) => {
+    // Garante que todos os modelos de página estejam no sitemap
+    const pageModels = models.filter((m) => m.type === 'page');
+    return documents
+      .filter((d) => pageModels.some((m) => m.name === d.modelName))
+      .map((document) => {
+        const model = pageModels.find((m) => m.name === document.modelName);
+        return {
+          stableId: document.id,
+          urlPath: model?.urlPath || '/',
+          document,
+          isHomePage: model?.urlPath === '/',
+        };
+      });
+  }
 });
