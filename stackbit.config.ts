@@ -5,7 +5,7 @@ export default defineStackbitConfig({
   ssgName: "custom",
   nodeVersion: "18",
   
-  // Container Hooks essenciais
+  // Container Hooks essenciais para ambiente Linux/Unix
   installCommand: "npm install",
   devCommand: "npm run dev",
   
@@ -223,6 +223,63 @@ export default defineStackbitConfig({
           type: "text", 
           label: "Nota do Formulário",
           description: "Nota explicativa do formulário",
+          required: false
+        }
+      ]
+    },
+
+    PortfolioPage: {
+      type: "page",
+      urlPath: "/portfolio",
+      filePath: "./content/portfolio.md",
+      fields: [
+        { 
+          name: "title", 
+          type: "string", 
+          label: "Título da Seção",
+          description: "Título principal da seção portfólio",
+          required: false
+        },
+        { 
+          name: "subtitle", 
+          type: "string", 
+          label: "Subtítulo",
+          description: "Subtítulo da seção portfólio",
+          required: false
+        },
+        { 
+          name: "deliverables_title", 
+          type: "string", 
+          label: "Título dos Entregáveis",
+          description: "Título da seção de exemplos de entregáveis",
+          required: false
+        },
+        { 
+          name: "cta_text", 
+          type: "string", 
+          label: "Texto do Botão CTA",
+          description: "Texto do botão de chamada para ação",
+          required: false
+        },
+        { 
+          name: "cta_description", 
+          type: "string", 
+          label: "Descrição do CTA",
+          description: "Texto que aparece antes do botão CTA",
+          required: false
+        },
+        { 
+          name: "whatsapp_url", 
+          type: "string", 
+          label: "URL WhatsApp",
+          description: "URL completa do WhatsApp",
+          required: false
+        },
+        { 
+          name: "whatsapp_message", 
+          type: "string", 
+          label: "Mensagem WhatsApp",
+          description: "Mensagem padrão para WhatsApp",
           required: false
         }
       ]

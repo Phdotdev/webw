@@ -1,7 +1,13 @@
 import React from 'react';
 import { MapPin, Network, Calculator, FileSpreadsheet, Activity } from 'lucide-react';
+import { parseMarkdownContent } from '../utils/contentParser';
+
+// Import the markdown content
+import portfolioContentRaw from '../../content/portfolio.md?raw';
 
 const Portfolio = () => {
+  const { frontmatter } = parseMarkdownContent(portfolioContentRaw);
+
   const portfolioItems = [
     {
       title: "Mapas KMZ Gerados",
@@ -56,14 +62,24 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="portfolio" className="py-20 bg-primary-950">
+    <section 
+      id="portfolio" 
+      className="py-20 bg-primary-950" 
+      data-sb-object-id="portfolio"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            <span className="text-gold-500">Portfólio</span> de Projetos
+          <h2 
+            className="text-4xl md:text-5xl font-bold text-white mb-4" 
+            data-sb-field-path="title"
+          >
+            <span className="text-gold-500">{frontmatter.title?.split(' ')[0] || "Portfólio"}</span> {frontmatter.title?.split(' ').slice(1).join(' ') || "de Projetos"}
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Exemplos do que você receberá em cada tipo de projeto
+          <p 
+            className="text-xl text-gray-300 max-w-3xl mx-auto" 
+            data-sb-field-path="subtitle"
+          >
+            {frontmatter.subtitle || "Exemplos do que você receberá em cada tipo de projeto"}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto mt-6"></div>
         </div>
@@ -91,8 +107,11 @@ const Portfolio = () => {
 
         {/* Sample Gallery */}
         <div className="bg-gradient-to-br from-primary-900 to-primary-800 rounded-2xl p-8 md:p-12 border border-gold-400/20">
-          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-8">
-            Exemplos de <span className="text-gold-500">Entregáveis</span>
+          <h3 
+            className="text-2xl md:text-3xl font-bold text-white text-center mb-8" 
+            data-sb-field-path="deliverables_title"
+          >
+            {frontmatter.deliverables_title?.split(' ')[0] || "Exemplos"} de <span className="text-gold-500">{frontmatter.deliverables_title?.split(' ').slice(2).join(' ') || "Entregáveis"}</span>
           </h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -120,16 +139,20 @@ const Portfolio = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-12">
-          <p className="text-gray-300 mb-6 text-lg">
-            Quer ver exemplos reais dos projetos? Entre em contato!
+          <p 
+            className="text-gray-300 mb-6 text-lg" 
+            data-sb-field-path="cta_description"
+          >
+            {frontmatter.cta_description || "Quer ver exemplos reais dos projetos? Entre em contato!"}
           </p>
           <a
-            href="https://wa.me/5591993190904?text=Olá Pedro, estou interessado em um projeto FTTH."
+            href={`${frontmatter.whatsapp_url || 'https://wa.me/5591993190904'}?text=${encodeURIComponent(frontmatter.whatsapp_message || 'Olá Pedro, estou interessado em um projeto FTTH.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gold-400 to-gold-600 text-primary-950 font-bold text-lg rounded-lg hover:from-gold-500 hover:to-gold-700 transition-all duration-300 transform hover:scale-105 shadow-lg border border-gold-400"
+            data-sb-field-path="cta_text"
           >
-            Ver Exemplos Reais
+            {frontmatter.cta_text || "Ver Exemplos Reais"}
           </a>
         </div>
       </div>
