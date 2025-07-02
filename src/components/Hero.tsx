@@ -28,11 +28,10 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Main Heading */}
-        <h1 
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-slide-up" 
-          data-sb-field-path="subtitle"
-        >
-          {frontmatter.subtitle || "Documente, planeje ou"} 
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-slide-up">
+          <span data-sb-field-path="subtitle">
+            {frontmatter.subtitle || "Documente, planeje ou"}
+          </span>
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
             expanda sua rede FTTH
           </span>
@@ -53,9 +52,10 @@ const Hero = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gold-400 to-gold-600 text-primary-950 font-bold text-lg rounded-lg hover:from-gold-500 hover:to-gold-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border border-gold-400"
-            data-sb-field-path="cta_text"
           >
-            {frontmatter.cta_text || "Solicitar orçamento agora"}
+            <span data-sb-field-path="cta_text">
+              {frontmatter.cta_text || "Solicitar orçamento agora"}
+            </span>
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </a>
           

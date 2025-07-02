@@ -1,0 +1,17 @@
+type: page
+name: Page
+label: Page
+description: A page model
+fields:
+  - type: string
+    name: title
+    label: Title
+    description: The title of the page
+  - type: string
+    name: subtitle
+    label: Subtitle
+    description: The subtitle of the page
+  - type: text
+    name: description
+    label: Description
+    description: The description of the page

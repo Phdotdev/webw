@@ -2,61 +2,71 @@ import { defineStackbitConfig } from "@stackbit/types";
 
 export default defineStackbitConfig({
   stackbitVersion: "~1.0.0",
-  ssgName: "custom",
+  ssgName: "vite",
   nodeVersion: "18",
   
-  // Container Hooks essenciais para ambiente Linux/Unix
-  installCommand: "npm install",
-  devCommand: "npm run dev",
-  
-  // Configuração dos modelos de página
-  models: {
-    HomePage: {
+  // Configurações essenciais do container
+  container: {
+    installCommand: "npm install",
+    devCommand: "npm run dev",
+    devPort: 5173,
+    devHost: "0.0.0.0"
+  },
+
+  // Configuração de conteúdo
+  contentSources: [
+    {
+      name: "local",
+      type: "files",
+      rootPath: "./content",
+      include: ["**/*.md"],
+      exclude: ["node_modules/**"]
+    }
+  ],
+
+  // Modelos de dados
+  models: [
+    {
+      name: "HomePage",
       type: "page",
       urlPath: "/",
-      filePath: "./content/home.md",
+      filePath: "content/home.md",
       fields: [
         { 
           name: "title", 
           type: "string", 
           label: "Título Principal",
-          description: "Título principal da página inicial",
-          required: false
+          description: "Título principal da página inicial"
         },
         { 
           name: "subtitle", 
           type: "string", 
           label: "Subtítulo",
-          description: "Subtítulo que aparece no hero",
-          required: false
+          description: "Subtítulo que aparece no hero"
         },
         { 
           name: "description", 
           type: "string", 
           label: "Descrição",
-          description: "Descrição complementar do subtítulo",
-          required: false
+          description: "Descrição complementar do subtítulo"
         },
         { 
           name: "cta_text", 
           type: "string", 
           label: "Texto do Botão CTA",
-          description: "Texto do botão de chamada para ação",
-          required: false
+          description: "Texto do botão de chamada para ação"
         },
         { 
           name: "whatsapp_message", 
           type: "string", 
           label: "Mensagem WhatsApp",
-          description: "Mensagem padrão para WhatsApp",
-          required: false
+          description: "Mensagem padrão para WhatsApp"
         },
         { 
           name: "stats_remote", 
           type: "string", 
           label: "Estatística - Remoto",
           description: "Valor da estatística de trabalho remoto",
-          required: false,
           default: "100%"
         },
         { 
@@ -64,7 +74,6 @@ export default defineStackbitConfig({
           type: "string", 
           label: "Label - Remoto",
           description: "Label da estatística remoto",
-          required: false,
           default: "Remoto"
         },
         { 
@@ -72,7 +81,6 @@ export default defineStackbitConfig({
           type: "string", 
           label: "Estatística - Qualidade",
           description: "Valor da estatística de qualidade",
-          required: false,
           default: "✓"
         },
         { 
@@ -80,209 +88,220 @@ export default defineStackbitConfig({
           type: "string", 
           label: "Label - Qualidade",
           description: "Label da estatística de qualidade",
-          required: false,
           default: "Praticidade e Velocidade"
         }
       ]
     },
     
-    AboutPage: {
+    {
+      name: "AboutPage",
       type: "page",
       urlPath: "/about",
-      filePath: "./content/about.md",
+      filePath: "content/about.md",
       fields: [
         { 
           name: "title", 
           type: "string", 
           label: "Título da Seção",
-          description: "Título principal da seção sobre",
-          required: false
+          description: "Título principal da seção sobre"
         },
         { 
           name: "name", 
           type: "string", 
           label: "Nome",
-          description: "Nome do profissional",
-          required: false
+          description: "Nome do profissional"
         },
         { 
           name: "profession", 
           type: "string", 
           label: "Profissão",
-          description: "Profissão/cargo do profissional",
-          required: false
+          description: "Profissão/cargo do profissional"
         },
         { 
           name: "intro", 
           type: "text", 
           label: "Introdução",
-          description: "Texto de introdução sobre o profissional",
-          required: false
+          description: "Texto de introdução sobre o profissional"
         },
         { 
           name: "experience", 
           type: "text", 
           label: "Experiência",
-          description: "Descrição da experiência profissional",
-          required: false
+          description: "Descrição da experiência profissional"
         },
         { 
           name: "mission", 
           type: "text", 
           label: "Missão",
-          description: "Descrição da missão e objetivos",
-          required: false
+          description: "Descrição da missão e objetivos"
         },
         { 
           name: "delivery", 
           type: "text", 
           label: "Entrega",
-          description: "Descrição do que é entregue ao cliente",
-          required: false
+          description: "Descrição do que é entregue ao cliente"
         },
         { 
           name: "focus", 
           type: "text", 
           label: "Foco",
-          description: "Descrição do foco e metodologia de trabalho",
-          required: false
+          description: "Descrição do foco e metodologia de trabalho"
         }
       ]
     },
     
-    ContactPage: {
+    {
+      name: "ContactPage",
       type: "page",
       urlPath: "/contact",
-      filePath: "./content/contact.md",
+      filePath: "content/contact.md",
       fields: [
         { 
           name: "title", 
           type: "string", 
           label: "Título",
-          description: "Título da seção de contato",
-          required: false
+          description: "Título da seção de contato"
         },
         { 
           name: "subtitle", 
           type: "string", 
           label: "Subtítulo",
-          description: "Subtítulo da seção de contato",
-          required: false
+          description: "Subtítulo da seção de contato"
         },
         { 
           name: "description", 
           type: "text", 
           label: "Descrição",
-          description: "Descrição da seção de contato",
-          required: false
+          description: "Descrição da seção de contato"
         },
         { 
           name: "phone", 
           type: "string", 
           label: "Telefone",
-          description: "Número de telefone para contato",
-          required: false
+          description: "Número de telefone para contato"
         },
         { 
           name: "email", 
           type: "string", 
           label: "Email",
-          description: "Endereço de email para contato",
-          required: false
+          description: "Endereço de email para contato"
         },
         { 
           name: "instagram", 
           type: "string", 
           label: "Instagram",
-          description: "Handle do Instagram (@usuario)",
-          required: false
+          description: "Handle do Instagram (@usuario)"
         },
         { 
           name: "whatsapp_url", 
           type: "string", 
           label: "URL WhatsApp",
-          description: "URL completa do WhatsApp",
-          required: false
+          description: "URL completa do WhatsApp"
         },
         { 
           name: "instagram_url", 
           type: "string", 
           label: "URL Instagram",
-          description: "URL completa do Instagram",
-          required: false
+          description: "URL completa do Instagram"
         },
         { 
           name: "form_title", 
           type: "string", 
           label: "Título do Formulário",
-          description: "Título do formulário de contato",
-          required: false
+          description: "Título do formulário de contato"
         },
         { 
           name: "form_note", 
           type: "text", 
           label: "Nota do Formulário",
-          description: "Nota explicativa do formulário",
-          required: false
+          description: "Nota explicativa do formulário"
         }
       ]
     },
 
-    PortfolioPage: {
+    {
+      name: "PortfolioPage",
       type: "page",
       urlPath: "/portfolio",
-      filePath: "./content/portfolio.md",
+      filePath: "content/portfolio.md",
       fields: [
         { 
           name: "title", 
           type: "string", 
           label: "Título da Seção",
-          description: "Título principal da seção portfólio",
-          required: false
+          description: "Título principal da seção portfólio"
         },
         { 
           name: "subtitle", 
           type: "string", 
           label: "Subtítulo",
-          description: "Subtítulo da seção portfólio",
-          required: false
+          description: "Subtítulo da seção portfólio"
         },
         { 
           name: "deliverables_title", 
           type: "string", 
           label: "Título dos Entregáveis",
-          description: "Título da seção de exemplos de entregáveis",
-          required: false
+          description: "Título da seção de exemplos de entregáveis"
         },
         { 
           name: "cta_text", 
           type: "string", 
           label: "Texto do Botão CTA",
-          description: "Texto do botão de chamada para ação",
-          required: false
+          description: "Texto do botão de chamada para ação"
         },
         { 
           name: "cta_description", 
           type: "string", 
           label: "Descrição do CTA",
-          description: "Texto que aparece antes do botão CTA",
-          required: false
+          description: "Texto que aparece antes do botão CTA"
         },
         { 
           name: "whatsapp_url", 
           type: "string", 
           label: "URL WhatsApp",
-          description: "URL completa do WhatsApp",
-          required: false
+          description: "URL completa do WhatsApp"
         },
         { 
           name: "whatsapp_message", 
           type: "string", 
           label: "Mensagem WhatsApp",
-          description: "Mensagem padrão para WhatsApp",
-          required: false
+          description: "Mensagem padrão para WhatsApp"
         }
       ]
     }
+  ],
+
+  // Mapeamento de site
+  siteMap: ({ documents, models }) => {
+    const pageModels = models.filter((m) => m.type === "page");
+
+    return documents
+      .filter((d) => pageModels.some(m => m.name === d.modelName))
+      .map((document) => {
+        const urlPath = (() => {
+          switch (document.modelName) {
+            case 'HomePage':
+              return '/';
+            case 'AboutPage':
+              return '/about';
+            case 'ContactPage':
+              return '/contact';
+            case 'PortfolioPage':
+              return '/portfolio';
+            default:
+              return null;
+          }
+        })();
+
+        if (!urlPath) return null;
+
+        return {
+          stableId: document.id,
+          urlPath: urlPath,
+          document,
+          isHomePage: document.modelName === 'HomePage',
+        };
+      })
+      .filter(Boolean);
   }
 });

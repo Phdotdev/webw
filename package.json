@@ -1,13 +1,15 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "pedro-moreira-ftth",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0 --port 5173",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --host 0.0.0.0 --port 5173",
+    "stackbit:dev": "npm run dev",
+    "stackbit:build": "npm run build"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
@@ -30,5 +32,8 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
     "vite": "^5.4.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
