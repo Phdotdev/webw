@@ -2,32 +2,24 @@ import { defineStackbitConfig } from "@stackbit/types";
 
 export default defineStackbitConfig({
   stackbitVersion: "~1.0.0",
-  ssgName: "vite",
-  nodeVersion: "18",
+  ssgName: "custom",
+  nodeVersion: "22",
   
   // Configurações essenciais do container
-  container: {
-    installCommand: "npm install",
-    devCommand: "npm run dev",
-    devPort: 5173,
-    devHost: "0.0.0.0"
-  },
+  // Removido bloco 'container' pois não é reconhecido pelo tipo StackbitConfig
 
   // Configuração de conteúdo
   contentSources: [
     {
-      name: "local",
-      type: "files",
-      rootPath: "./content",
+      path: "./content",
       include: ["**/*.md"],
       exclude: ["node_modules/**"]
     }
-  ],
+  ] as any,
 
   // Modelos de dados
-  models: [
-    {
-      name: "HomePage",
+  models: {
+    HomePage: {
       type: "page",
       urlPath: "/",
       filePath: "content/home.md",
@@ -93,8 +85,7 @@ export default defineStackbitConfig({
       ]
     },
     
-    {
-      name: "AboutPage",
+    AboutPage: {
       type: "page",
       urlPath: "/about",
       filePath: "content/about.md",
@@ -150,8 +141,7 @@ export default defineStackbitConfig({
       ]
     },
     
-    {
-      name: "ContactPage",
+    ContactPage: {
       type: "page",
       urlPath: "/contact",
       filePath: "content/contact.md",
@@ -219,8 +209,7 @@ export default defineStackbitConfig({
       ]
     },
 
-    {
-      name: "PortfolioPage",
+    PortfolioPage: {
       type: "page",
       urlPath: "/portfolio",
       filePath: "content/portfolio.md",
@@ -269,39 +258,23 @@ export default defineStackbitConfig({
         }
       ]
     }
-  ],
+  },
 
   // Mapeamento de site
   siteMap: ({ documents, models }) => {
-    const pageModels = models.filter((m) => m.type === "page");
-
     return documents
-      .filter((d) => pageModels.some(m => m.name === d.modelName))
+      .filter((document) => {
+        const model = models[document.modelName];
+        return model && model.urlPath;
+      })
       .map((document) => {
-        const urlPath = (() => {
-          switch (document.modelName) {
-            case 'HomePage':
-              return '/';
-            case 'AboutPage':
-              return '/about';
-            case 'ContactPage':
-              return '/contact';
-            case 'PortfolioPage':
-              return '/portfolio';
-            default:
-              return null;
-          }
-        })();
-
-        if (!urlPath) return null;
-
+        const model = models[document.modelName];
         return {
           stableId: document.id,
-          urlPath: urlPath,
+          urlPath: model.urlPath,
           document,
-          isHomePage: document.modelName === 'HomePage',
+          isHomePage: model.urlPath === '/',
         };
-      })
-      .filter(Boolean);
+      });
   }
 });
