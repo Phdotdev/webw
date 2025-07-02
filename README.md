@@ -8,7 +8,6 @@ Site profissional para Pedro Moreira, especialista em projetos FTTH (Fiber to th
 - **Vite** como bundler
 - **Tailwind CSS** para estilização
 - **Netlify Visual Editor** para edição de conteúdo
-- **Stackbit** para CMS
 
 ## 📁 Estrutura do Projeto
 
@@ -21,7 +20,7 @@ Site profissional para Pedro Moreira, especialista em projetos FTTH (Fiber to th
 │   ├── components/         # Componentes React
 │   ├── utils/             # Utilitários
 │   └── ...
-├── stackbit.config.ts     # Configuração do Stackbit/Netlify Visual Editor
+├── stackbit.config.ts     # Configuração do Netlify Visual Editor
 └── package.json
 ```
 
