@@ -23,7 +23,7 @@ Site profissional para Pedro Moreira, especialista em projetos FTTH (Fiber to th
 │   └── ...
 ├── stackbit.config.ts     # Configuração do Netlify Visual Editor
 ├── netlify.toml           # Configuração do Netlify
-└── package.json
+└── package.json           # Dependências do projeto
 ```
 
 ## 🛠️ Desenvolvimento
@@ -43,12 +43,20 @@ npm run build
 
 Este projeto está configurado para funcionar com o Netlify Visual Editor, permitindo edição inline do conteúdo.
 
-### Configurações Implementadas:
+### Configurações do Netlify:
 
-1. **stackbit.config.ts:** Configuração principal com modelos de dados
-2. **netlify.toml:** Configurações de build e headers para o Visual Editor
-3. **Componentes React:** Anotados com `data-sb-field-path` para edição inline
-4. **Servidor de desenvolvimento:** Configurado para aceitar conexões externas
+**Build Settings:**
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Base directory: (deixar em branco - raiz do repositório)
+
+**Environment Variables:**
+- NODE_VERSION: `18`
+
+**Preview Server:**
+- Command: `npm run dev`
+- Port: 5173
+- Host: 0.0.0.0
 
 ### Estrutura de Conteúdo:
 
@@ -77,16 +85,13 @@ Se o Visual Editor não estiver funcionando:
 2. **Configurações de Build:**
    - Build command: `npm run build`
    - Publish directory: `dist`
+   - Base directory: (vazio)
    - Node version: 18
 
 3. **Preview Server:**
    - Command: `npm run dev`
    - Port: 5173
    - Host: 0.0.0.0
-
-4. **Headers de Segurança:**
-   - X-Frame-Options configurado para permitir iframe
-   - Exceções para rotas do Stackbit
 
 ## 🎨 Personalização
 
@@ -110,6 +115,9 @@ Pedro Moreira - Projetista FTTH
 - Instagram: @ph_ftth
 
 ## 🐛 Troubleshooting
+
+### Problema: package.json não encontrado
+**Solução:** Verificar se o package.json está na raiz do repositório e se o Base directory no Netlify está vazio.
 
 ### Visual Editor não carrega:
 1. Verificar se o preview server está rodando na porta 5173
