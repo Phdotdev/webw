@@ -2,14 +2,14 @@ import { defineStackbitConfig } from "@stackbit/types";
 import { GitContentSource } from "@stackbit/cms-git";
 
 export default defineStackbitConfig({
-  stackbitVersion: '~0.7.0',
-  ssgName: 'custom',
-  nodeVersion: '18',
+  stackbitVersion: '~1.0.0', // Atualizado para a versão mais recente e estável
+  ssgName: 'custom', // 'vite' não é suportado oficialmente, usar 'custom' para Vite
+  nodeVersion: '18', // Consistente com netlify.toml
   devCommand: 'npm run dev',
   contentSources: [
     new GitContentSource({
-      rootPath: '.',
-      contentDirs: ['content'],
+      rootPath: '.', // Mantido como '.' para indicar a raiz do projeto
+      contentDirs: ['content'], // Onde seus arquivos .md estão localizados
       models: [
         {
           name: 'HomePage',
@@ -79,12 +79,6 @@ export default defineStackbitConfig({
         }
       ]
     })
-  ],
-  modelExtensions: [
-    { name: 'HomePage', type: 'page', urlPath: '/' },
-    { name: 'AboutPage', type: 'page', urlPath: '/about' },
-    { name: 'ContactPage', type: 'page', urlPath: '/contact' },
-    { name: 'PortfolioPage', type: 'page', urlPath: '/portfolio' }
   ],
   siteMap: ({ documents, models }) => {
     const pageModels = models.filter((m) => m.type === 'page');
