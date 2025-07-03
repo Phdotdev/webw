@@ -44,20 +44,22 @@ const Portfolio = () => {
   const deliverables = [
     {
       title: "Mapa de Rede Completo",
-      placeholder: true
-    },
-    {
-      title: "Diagrama de Conexões", 
-      placeholder: true
-    },
-    {
-      title: "Relatório de Potência",
-      image: "/{83F13E46-9D4C-41E3-8A29-03561A976A52}.png",
+      image: "/mapa-rede-completo.png",
       placeholder: false
     },
     {
-      title: "Lista de Materiais",
+      title: "Diagrama de Conexões",
+      image: "/diagrama-conexoes.png",
+      placeholder: false
+    },
+    {
+      title: "Relatório de Potência",
       placeholder: true
+    },
+    {
+      title: "Lista de Materiais",
+      image: "/lista-materiais.png",
+      placeholder: false
     }
   ];
 

@@ -32,7 +32,10 @@ const Hero = () => {
           className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-slide-up" 
           data-sb-field-path="subtitle"
         >
-          {frontmatter.subtitle || "Documente, planeje ou"} 
+          {/* Mostra apenas a parte branca até a palavra "ou" */}
+          {(frontmatter.subtitle || "Documente, planeje ou expanda sua rede FTTH")
+            .replace(/expanda sua rede FTTH/gi, "")
+          }
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
             expanda sua rede FTTH
           </span>
