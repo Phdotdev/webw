@@ -33,7 +33,7 @@ const Hero = () => {
           data-sb-field-path="subtitle"
         >
           {/* Mostra apenas a parte branca até a palavra "ou" */}
-          {(frontmatter.subtitle || "Documente, planeje ou expanda sua rede FTTH")
+          {(frontmatter.subtitle || "Documente, planeje ou")
             .replace(/expanda sua rede FTTH/gi, "")
           }
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
