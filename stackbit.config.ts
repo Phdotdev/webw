@@ -2,7 +2,7 @@ import { defineStackbitConfig } from "@stackbit/types";
 import { GitContentSource } from "@stackbit/cms-git";
 
 export default defineStackbitConfig({
-  stackbitVersion: '~1.0.0',
+  stackbitVersion: '~0.7.0',
   ssgName: 'custom',
   nodeVersion: '18',
   devCommand: 'npm run dev',
@@ -17,7 +17,7 @@ export default defineStackbitConfig({
           urlPath: '/',
           filePath: 'content/home.md',
           fields: [
-            { name: 'title', type: 'string', label: 'Título Principal', description: 'Título principal da página inicial', required: true },
+            { name: 'title', type: 'string', label: 'Título Principal', description: 'Título principal da página inicial' },
             { name: 'subtitle', type: 'string', label: 'Subtítulo', description: 'Subtítulo que aparece no hero' },
             { name: 'description', type: 'string', label: 'Descrição', description: 'Descrição complementar do subtítulo' },
             { name: 'cta_text', type: 'string', label: 'Texto do Botão CTA', description: 'Texto do botão de chamada para ação' },
@@ -34,7 +34,7 @@ export default defineStackbitConfig({
           urlPath: '/about',
           filePath: 'content/about.md',
           fields: [
-            { name: 'title', type: 'string', label: 'Título da Seção', description: 'Título principal da seção sobre', required: true },
+            { name: 'title', type: 'string', label: 'Título da Seção', description: 'Título principal da seção sobre' },
             { name: 'name', type: 'string', label: 'Nome', description: 'Nome do profissional' },
             { name: 'profession', type: 'string', label: 'Profissão', description: 'Profissão/cargo do profissional' },
             { name: 'intro', type: 'text', label: 'Introdução', description: 'Texto de introdução sobre o profissional' },
@@ -50,7 +50,7 @@ export default defineStackbitConfig({
           urlPath: '/contact',
           filePath: 'content/contact.md',
           fields: [
-            { name: 'title', type: 'string', label: 'Título', description: 'Título da seção de contato', required: true },
+            { name: 'title', type: 'string', label: 'Título', description: 'Título da seção de contato' },
             { name: 'subtitle', type: 'string', label: 'Subtítulo', description: 'Subtítulo da seção de contato' },
             { name: 'description', type: 'text', label: 'Descrição', description: 'Descrição da seção de contato' },
             { name: 'phone', type: 'string', label: 'Telefone', description: 'Número de telefone para contato' },
@@ -68,7 +68,7 @@ export default defineStackbitConfig({
           urlPath: '/portfolio',
           filePath: 'content/portfolio.md',
           fields: [
-            { name: 'title', type: 'string', label: 'Título da Seção', description: 'Título principal da seção portfólio', required: true },
+            { name: 'title', type: 'string', label: 'Título da Seção', description: 'Título principal da seção portfólio' },
             { name: 'subtitle', type: 'string', label: 'Subtítulo', description: 'Subtítulo da seção portfólio' },
             { name: 'deliverables_title', type: 'string', label: 'Título dos Entregáveis', description: 'Título da seção de exemplos de entregáveis' },
             { name: 'cta_text', type: 'string', label: 'Texto do Botão CTA', description: 'Texto do botão de chamada para ação' },
@@ -87,7 +87,6 @@ export default defineStackbitConfig({
     { name: 'PortfolioPage', type: 'page', urlPath: '/portfolio' }
   ],
   siteMap: ({ documents, models }) => {
-    // Garante que todos os modelos de página estejam no sitemap
     const pageModels = models.filter((m) => m.type === 'page');
     return documents
       .filter((d) => pageModels.some((m) => m.name === d.modelName))

@@ -84,4 +84,24 @@ module.exports = defineStackbitConfig({
     }),
   ],
   models,
+  modelExtensions: [
+    { name: 'HomePage', type: 'page', urlPath: '/' },
+    { name: 'AboutPage', type: 'page', urlPath: '/about' },
+    { name: 'ContactPage', type: 'page', urlPath: '/contact' },
+    { name: 'PortfolioPage', type: 'page', urlPath: '/portfolio' }
+  ],
+  siteMap: ({ documents, models }) => {
+    const pageModels = models.filter((m) => m.type === 'page');
+    return documents
+      .filter((d) => pageModels.some((m) => m.name === d.modelName))
+      .map((document) => {
+        const model = pageModels.find((m) => m.name === document.modelName);
+        return {
+          stableId: document.id,
+          urlPath: model?.urlPath || '/',
+          document,
+          isHomePage: model?.urlPath === '/',
+        };
+      });
+  }
 });
